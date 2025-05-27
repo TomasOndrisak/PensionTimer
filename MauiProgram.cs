@@ -1,4 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
+using PensionTimer.Views;
+using PensionTimer.ViewModels;
 
 namespace PensionTimer
 {
@@ -16,8 +18,10 @@ namespace PensionTimer
                 });
 
 #if DEBUG
-    		builder.Logging.AddDebug();
+            builder.Logging.AddDebug();
 #endif
+            builder.Services.AddSingleton<MainPageViewModel>();
+            builder.Services.AddSingleton<MainPage>();
 
             return builder.Build();
         }

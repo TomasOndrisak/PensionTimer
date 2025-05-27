@@ -1,4 +1,4 @@
-﻿namespace PensionTimer
+﻿namespace PensionTimer.Views
 {
     public partial class AppShell : Shell
     {
