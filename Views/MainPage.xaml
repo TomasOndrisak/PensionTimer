@@ -13,6 +13,31 @@
                     Style="{StaticResource Headline}"
                     Text="{Binding HeadLineText}" />
                 <DatePicker Date="{Binding YearOfBirth}" HorizontalOptions="Center" />
+                <StackLayout
+                    HorizontalOptions="Center"
+                    Orientation="Horizontal"
+                    Spacing="10">
+                    <Label Text="Muž" VerticalOptions="Center" />
+                    <Switch IsToggled="{Binding IsFemale}" />
+                    <Label Text="Žena" VerticalOptions="Center" />
+                </StackLayout>
+                <StackLayout
+                    HorizontalOptions="Center"
+                    Orientation="Vertical"
+                    Spacing="10">
+                    <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
+                        <Label Text="Počet detí: " />
+                        <Label
+                            FontAttributes="Bold"
+                            HorizontalOptions="Center"
+                            Text="{Binding NumberOfChildren}" />
+                    </StackLayout>
+                    <Slider
+                        Maximum="5"
+                        Minimum="0"
+                        WidthRequest="200"
+                        Value="{Binding NumberOfChildren, Mode=TwoWay}" />
+                </StackLayout>
                 <Button
                     Margin="50,0"
                     Command="{Binding SubmitDateOfBirthCommand}"

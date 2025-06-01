@@ -31,6 +31,13 @@ namespace PensionTimer.ViewModels
 
         [ObservableProperty]
         private bool _calculationStep = false;
+
+        [ObservableProperty]
+        private bool _isFemale = false;
+
+        [ObservableProperty]
+        private int _numberOfChildren = 0;
+
         private MainPageModel _model;
         public MainPageViewModel()
         {
@@ -45,7 +52,7 @@ namespace PensionTimer.ViewModels
             {
                 YearOfBirthStep = false;
 
-                var user = new UserInfo(YearOfBirth, false, 0);
+                var user = new UserInfo(YearOfBirth, IsFemale, NumberOfChildren);
                 var retirementInfo = _model.FindRetirementRequirements(user);
 
                 HeadLineText = _model.GetRetirementInfo(user.BirthDate, retirementInfo);
