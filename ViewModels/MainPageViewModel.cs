@@ -34,7 +34,7 @@ namespace PensionTimer.ViewModels
         private MainPageModel _model;
         public MainPageViewModel()
         {
-            YearOfBirth = new(1960, 1, 1);
+            YearOfBirth = new(2000, 1, 1);
             _model = new MainPageModel();
         }
 
@@ -45,28 +45,16 @@ namespace PensionTimer.ViewModels
             {
                 YearOfBirthStep = false;
 
-                HeadLineText = $"Vek ";
-
-                var today = DateOnly.FromDateTime(DateTime.Today);
-                int age = today.Year - YearOfBirth.Year;
-
-                if (today < new DateOnly(today.Year, YearOfBirth.Month, YearOfBirth.Day))
-                    age--;
-
                 var user = new UserInfo(YearOfBirth, false, 0);
+                var retirementInfo = _model.FindRetirementRequirements(user);
 
+                HeadLineText = _model.GetRetirementInfo(user.BirthDate, retirementInfo);
                 CalculationStep = true;
-
-                var ageUntilRetirement = _model.GetRetirementAge(user);
-
-                HeadLineText = $"Vek: {age} a do dôchodku {ageUntilRetirement.RetirementAgeYears} {ageUntilRetirement.RetirementAgeMonths}";
             }
             catch (Exception ex)
             {
-
                 Debug.WriteLine(ex);
             }
         }
-
     }
 }
