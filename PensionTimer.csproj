@@ -64,7 +64,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Models\" />
+	  <Folder Include="CustomControls\" />
 	</ItemGroup>
 
 </Project>

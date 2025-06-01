@@ -5,6 +5,6 @@
     Title="PensionTimer">
 
     <ShellContent
-        Title="Home"
+        Title="Pension Timer"
         ContentTemplate="{DataTemplate local:MainPage}" Route="MainPage" />
 </Shell>

@@ -1,30 +1,38 @@
-﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:viewmodels="clr-namespace:PensionTimer.ViewModels" x:Class="PensionTimer.Views.MainPage"
-             x:DataType="viewmodels:MainPageViewModel">
+﻿<ContentPage
+    x:Class="PensionTimer.Views.MainPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewmodels="clr-namespace:PensionTimer.ViewModels"
+    x:DataType="viewmodels:MainPageViewModel">
     <ScrollView>
-        <VerticalStackLayout
-            Padding="30,0"
-            Spacing="25">
-            <Image
-                Source="dotnet_bot.png"
-                HeightRequest="185"
-                Aspect="AspectFit"
-                SemanticProperties.Description="dot net bot in a race car number eight" />
+        <Grid>
 
-            <Label
-                Text="{Binding Title}" Style="{StaticResource Headline}"
-                SemanticProperties.HeadingLevel="Level1" />
+            <VerticalStackLayout IsVisible="{Binding YearOfBirthStep}" Spacing="25">
+                <Label
+                    SemanticProperties.HeadingLevel="Level1"
+                    Style="{StaticResource Headline}"
+                    Text="{Binding HeadLineText}" />
+                <DatePicker Date="{Binding YearOfBirth}" HorizontalOptions="Center" />
+                <Button
+                    Margin="50,0"
+                    Command="{Binding SubmitDateOfBirthCommand}"
+                    HorizontalOptions="Fill"
+                    SemanticProperties.Hint="Submits the date of birth you set"
+                    Text="{Binding ButtonText}" />
+            </VerticalStackLayout>
 
-            <Label
-                Text="Welcome to .NET Multi-platform App UI"
-                Style="{StaticResource SubHeadline}"
-                SemanticProperties.HeadingLevel="Level2"
-                SemanticProperties.Description="Welcome to dot net Multi platform App U I" />
+            <VerticalStackLayout IsVisible="{Binding CalculationStep}" Spacing="25">
+                <Image
+                    Aspect="AspectFit"
+                    HeightRequest="185"
+                    SemanticProperties.Description="dot net bot in a race car number eight"
+                    Source="dotnet_bot.png" />
+                <Label
+                    SemanticProperties.HeadingLevel="Level1"
+                    Style="{StaticResource Headline}"
+                    Text="{Binding HeadLineText}" />
 
-            <Button
-                Text="{Binding ButtonText}" Command="{Binding CounterClickedCommand}" SemanticProperties.Hint="Counts the number of times you click"
-                HorizontalOptions="Fill" />
-        </VerticalStackLayout>
+            </VerticalStackLayout>
+        </Grid>
     </ScrollView>
 </ContentPage>
